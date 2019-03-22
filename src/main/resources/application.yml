@@ -1,0 +1,47 @@
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8 
+    accesslog:
+      buffered: true
+      directory: D:/logs
+      enabled: true
+      file-date-format: .yyyy-MM-dd
+      pattern: common
+      prefix: access_log
+      rename-on-rotate: false
+      request-attributes-enabled: false
+      rotate: true
+      suffix: .log
+
+spring:
+  datasource:
+    url: jdbc:mysql://47.98.113.85:3306/longju_gewang?characterEncoding=UTF-8&useSSL=false
+    username: chenglong
+    password: P@ssw0rd
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html; charset=utf-8
+    cache: false
+    check-template: true
+    prefix: classpath:/templates/
+    suffix: .html
+#  data:
+#    elasticsearch:
+#      cluster-name: my-application #默认即为 elasticsearch
+#      cluster-nodes: 192.168.101.187:9300 #配置es节点信息，逗号分隔，如果没有指定，则启动ClientNode
+#      properties:
+#                path:
+#                  logs: ./elasticsearch/log #elasticsearch日志存储目录
+#                  data: ./elasticsearch/data #elasticsearch数据存储目录
+mybatis:
+  mapper-locations: classpath:com/pavilionking/wcm/mapper/*Mapper.xml
+  type-aliases-package: com.pavilionking.wcm.dto
+  
+  
+
+  

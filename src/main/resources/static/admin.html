@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html  lang="zh-CN" ng-app="myApp">
+	<head>
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>龙局集团后台管理系统</title>
+		<!-- <link href="assets/plugins/h-ui/H-ui.min.css" rel="stylesheet" type="text/css" />
+		<link href="assets/plugins/h-ui/H-ui.login.css" rel="stylesheet" type="text/css" />
+		<link href="assets/plugins/h-ui/style.css" rel="stylesheet" type="text/css" />
+		<link href="assets/plugins/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
+		
+<link rel="stylesheet" type="text/css" href="assets/plugins/h-ui/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="assets/plugins/h-ui/skin/default/skin.css" id="skin" /> -->
+		<link rel="stylesheet" href="assets/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
+		<script type="text/javascript" src="assets/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="assets/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="assets/plugins/angular/angular.min.js" ></script>
+		<script type="text/javascript" src="assets/plugins/angular/angular-ui-router.min.js" ></script>
+		<script type="text/javascript" src="assets/plugins/angular/ui-bootstrap-tpls.min.js"></script>
+		<!-- <script type="text/javascript" src="assets/plugins/h-ui/H-ui.min.js"></script>
+<script type="text/javascript" src="assets/plugins/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="assets/plugins/h-ui/H-ui.admin.js"></script> --> <!--/_footer 作为公共模版分离出去-->
+		<script type="text/javascript" src="admin/app.js"></script>
+		<script type="text/javascript" src="admin/service.js"></script>
+		
+		
+		<!-- Controller   lib  -->
+		<script type="text/javascript" src="admin/components/home/carouselfigureCtrl.js"></script>
+		
+<style>
+body {
+	padding-top: 50px;
+	padding-bottom: 40px;
+	color: #5a5a5a;
+}
+/* 下面是左侧导航栏的代码 */
+.sidebar {
+	position: fixed;
+	top: 51px;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	display: block;
+	padding: 20px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background-color: #ddd;
+	border-right: 1px solid #eee;
+}
+
+.nav-sidebar {
+	margin-right: -21px;
+	margin-bottom: 20px;
+	margin-left: -20px;
+}
+
+.nav-sidebar>li>a {
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+.nav-sidebar>.active>a, .nav-sidebar>.active>a:hover, .nav-sidebar>.active>a:focus
+	{
+	color: #fff;
+	background-color: #428bca;
+}
+
+.main {
+	padding: 20px;
+}
+
+.main .page-header {
+	margin-top: 0;
+}
+.secondmenu a {
+	font-size: 10px;
+	color: #4A515B;
+	text-align: center;
+}
+</style>
+<script type="text/javascript">
+</script>
+	</head>
+	<body>
+	    <div ui-view></div>
+	</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="commonHeader(title)">
+<title th:text="${title}"></title>
+<link
+	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link rel="shortcut icon" href="assets/favicon.ico" />
+<link rel="bookmark" href="assets/favicon.ico" />
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{/assets/css/nav.css}">
+<link rel="stylesheet" th:href="@{/assets/css/client/childrenCom.css}">
+<link rel="stylesheet" th:href="@{/assets/css/client/footer.css}">
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<style type="text/css">
+/* .carousel-inner > .item > img {
+	  min-width: 100%;
+	  height: 500px;
+	} */
+/* .nav-tabs
+{
+     text-align: center;
+     height: 40px;
+     line-height: 40px;
+} */
+</style>
+</head>
+<body>
+	<div th:fragment="commonNav">
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">龙局集团</a>
+				</div>
+				<ul class="mynav nav navbar-nav">
+					<li class="active"><a th:href="@{/index}">首页</a></li>
+					<li><a class="mynava">新闻中心</a></li>
+					<li><a class="mynava"
+						th:href="@{/childrenCom(childrenName='龙局集團')}">集团业务</a></li>
+					<li><a class="mynava" href="">社会责任</a></li>
+					<li><a class="mynava" href="">人力资源</a></li>
+					<li><a class="mynava" href="">投资者关系</a></li>
+					<li><a class="mynava">联系龙局</a></li>
+					<li><a class="mynava" th:href="@{/about}">关于龙局</a></li>
+				</ul>
+				<form class="navbar-form navbar-right">
+					<!-- 声明表单组 -->
+					<div class="form-group">
+						<!-- 声明输入框组 -->
+						<div class="input-group">
+							<!-- 声明文本输入框 -->
+							<input type="text" class="form-control"> <span
+								class="input-group-btn"> <!-- 放大镜按钮 -->
+								<button class="btn btn-default">
+									<!-- 用文字代替图标 -->
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</nav>
+	</div>
+	<footer th:fragment="commonFooter">
+		<div class="footer-banner">
+			<div class="footer-bubble bubble-1"></div>
+			<div class="footer-bubble bubble-2"></div>
+			<div class="footer-bubble bubble-3"></div>
+			<div class="footer-banner-text">致力于打造中国最受欢迎的综合资源免费分享资源平台</div>
+			<div class="footer-banner-button">
+				<a target="_blank" href="">立即免费注册</a>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="auto clearfix">
+				<!-- footer主要-->
+				<div class="five-superiority">
+					<ul class="five-superiority-list clearfix">
+						<li class="compensate_ico"><a> <span>资源全 无后门</span>
+						</a></li>
+						<li class="retreat_ico"><a> <span>安全分享 保障安全</span>
+						</a></li>
+						<li class="technology_ico"><a> <span>7*24小时 服务支持</span>
+						</a></li>
+						<li class="prepare_ico"><a> <span>权威认证 安全可信</span>
+						</a></li>
+					</ul>
+				</div>
+				<div class="footer-floor1">
+					<div class="footer-left">
+						<div class="company-box">
+							<h3>0000-8888888</h3>
+							<h4>周一至周日9：00-24：00</h4>
+							<a href="" target="_blank" class="more"></a> <i class="talkqq"></i>联系在线客服
+						</div>
+					</div>
+					<div class="footer-list">
+						<ul>
+							<li class="flist-title">常见问题</li>
+							<li><a href="">帮助中心</a></li>
+							<li><a href="">注册教程</a></li>
+							<li><a href="">登录教程</a></li>
+						</ul>
+						<ul>
+							<li class="flist-title">企业文化</li>
+							<li><a href="">关于我们</a></li>
+							<li><a href="">发展历程</a></li>
+							<li><a href="">企业资质</a></li>
+						</ul>
+						<ul>
+							<li class="flist-title">商务合作</li>
+							<li><a href="">账号注册</a></li>
+							<li><a href="">投诉建议</a></li>
+							<li><a href="" target="_blank">服务协议</a></li>
+						</ul>
+						<ul class="flist-4">
+							<li class="flist-title">招贤纳士</li>
+							<li><a href="">免责申明</a></li>
+							<li><a href="">使用条款</a></li>
+							<li><a href="">联系我们</a></li>
+						</ul>
+						<div class="clear-float"></div>
+					</div>
+					<div class="footer-right">
+						<img th:src="@{/assets/images/client/footer/weixincode.jpg}"
+							width="134" height="134">
+						<p>扫描关注微信公众号</p>
+					</div>
+					<div class="clear-float"></div>
+				</div>
+			</div>
+
+			<div class="footer_bot">
+				<div class="footer_copy">
+					<p class="STYLE1" style="color: #FFFFFF;">
+						龙局集团©版权所有 longju Group
+技术支持 联络我们 邮箱登录 网站地图法 律声明备案号：京ICP00000000号
+					</p>
+					<!-- <a href="" target="_blank"> <img
+						th:src="@{/assets/images/client/footer/rdIpojR.png}"></img></a> <a
+						href="" target="_blank"> <img
+						th:src="@{/assets/images/client/footer/rdIpoMR.png}"></img></a> <a
+						href="" target="_blank"> <img
+						th:src="@{/assets/images/client/footer/rdIppKR.png}"></img></a> <a
+						href="" target="_blank"> <img
+						th:src="@{/assets/images/client/footer/rdIpq63.png}"></img></a> <span
+						class="STYLE1"></span>
+				</div> -->
+			</div>
+		</div>
+
+		<!-- footer end -->
+	</footer>
+</body>
+</html>

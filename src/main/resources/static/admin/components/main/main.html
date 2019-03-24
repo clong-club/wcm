@@ -2,20 +2,22 @@
 <!-- <!—-左侧导航栏-->
 <div class="col-sm-2 col-md-2 sidebar">
 	<ul id="main-nav" class="nav nav-tabs nav-stacked" style="">
-		<li class="active"><a href="javascript:void(0);"> <i
-				class="glyphicon  glyphicon-home"></i> 首页
+		<li class="active"><a href="javascript:void(0);" ui-sref="index">
+				<i class="glyphicon  glyphicon-home"></i> 首页
 		</a></li>
-		<li><a  href="/#systemSetting" class="nav-header collapsed"
+		<li><a href="/#systemSetting" class="nav-header collapsed"
 			data-toggle="collapse"> <i class="glyphicon  glyphicon-cog"></i>
 				系统管理 <span class="pull-right glyphicon glyphicon-chevron-down"></span>
 		</a>
 			<ul id="systemSetting" class="nav nav-list collapse secondmenu"
 				style="height: 0px;">
-				<li><a  ui-sref="index.detail"><i class="glyphicon glyphicon-user"></i>用户管理</a></li>
-				<li><a href="javascript:void(0);" ui-sref="index.usermanager" ><i
-						class="glyphicon glyphicon-th-list"></i>菜单管理</a></li>
-				<li><a href="javascript:void(0);"><i
-						class="glyphicon glyphicon-asterisk"></i>角色管理</a></li>
+				<li><a href="javascript:void(0);" ui-sref="index.usermanager">
+						<i class="glyphicon glyphicon-user"></i>用户管理
+				</a></li>
+				<li><a href="javascript:void(0);" ui-sref="index.groupmanager"><i
+						class="glyphicon glyphicon-th-list"> </i>群组管理</a></li>
+				<li><a href="javascript:void(0);" ui-sref="index.authmanager"><i
+						class="glyphicon glyphicon-asterisk"></i>权限管理</a></li>
 				<li><a href="javascript:void(0);"><i
 						class="glyphicon glyphicon-edit"></i>修改密码</a></li>
 				<li><a href="javascript:void(0);"><i
@@ -26,7 +28,9 @@
 				首页管理 <span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
 			<ul id="computermanager" class="nav nav-list collapse secondmenu"
 				style="height: 0px;">
-				<li><a  href="javascript:void(0);" ui-sref="index.carouselfigure"><i class="glyphicon glyphicon-user"></i>轮播图管理</a></li>
+				<li><a href="javascript:void(0);"
+					ui-sref="index.carouselfigure"><i
+						class="glyphicon glyphicon-user"></i>轮播图管理</a></li>
 				<li><a href="javascript:void(0);"><i
 						class="glyphicon glyphicon-th-list"></i>展示产品管理</a></li>
 				<li><a href="javascript:void(0);"><i
@@ -92,16 +96,7 @@
 <!-- <!—右侧管理控制台-->
 <div ui-view="navDetail"
 	class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<h1 class="page-header">管理控制台</h1>
-	<p>
-		<!-- <!—一组按钮控件-->
-		<button type="button" class="btn btn-lg btn-default">操作1</button>
-		<button type="button" class="btn btn-lg btn-primary">操作2</button>
-		<button type="button" class="btn btn-lg btn-success">操作3</button>
-		<button type="button" class="btn btn-lg btn-info">操作4</button>
-		<button type="button" class="btn btn-lg btn-warning">操作5</button>
-		<button type="button" class="btn btn-lg btn-danger">操作6</button>
-	</p>
+	<h1 class="page-header">任务控制台</h1>
 	<div class="row">
 		<div class="col-md-6">
 			<!-- <!—panel面板，里面放置一些控件，下同-->

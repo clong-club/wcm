@@ -171,21 +171,82 @@ angular.module('myServices', [])
         }
     })
 
-     //获取全文检索数据
-    .factory('getFullText',function(req){
-        //获取我的值班级别
-        function req_getFullText(obj,callback){
-            req.post('trsSearch/trsSearch.do',obj).success(function(resp){
-                if(resp.code == '211'){
-                    if (callback) callback(resp);
-                }else{
-                    console.log(resp.msg);
+    .factory('myPaginationService',function(){
+
+
+            var getPageData = function(pageObject,page){
+                pageObject.currentPage = page;
+                if (pageObject.currentPage > 1 && pageObject.currentPage < pageObject.totalPage) {
+                     pageObject.pages = [
+                         pageObject.currentPage - 1,
+                         pageObject.currentPage,
+                         pageObject.currentPage + 1
+                     ];
+                } else if (pageObject.currentPage == 1 && pageObject.totalPage == 1) {
+                    pageObject.pages = [
+                        1
+                    ];
+                } else if (pageObject.currentPage == 1 && pageObject.totalPage == 2) {
+                    pageObject.pages = [
+                        1,2
+                    ];
+                } else if (pageObject.currentPage == 1 && pageObject.totalPage > 2) {
+                    pageObject.pages = [
+                        pageObject.currentPage,
+                        pageObject.currentPage + 1,
+                        pageObject.currentPage + 2
+                    ];
+                } else if (pageObject.currentPage == pageObject.totalPage && pageObject.totalPage == 1) {
+                    pageObject.pages = [
+                        1
+                    ];
+                } else if (pageObject.currentPage == pageObject.totalPage && pageObject.totalPage == 2) {
+                    pageObject.pages = [
+                        1,2
+                    ];
+                } else if (pageObject.currentPage == pageObject.totalPage && pageObject.totalPage > 2) {
+                    pageObject.pages = [
+                        pageObject.currentPage - 2,
+                        pageObject.currentPage - 1,
+                        pageObject.currentPage
+                    ];
                 }
-            });
-        }
-        return {
-            req_getFullText: req_getFullText
-        }
+            };
+
+            var service = {
+
+                upPageClick: function(pageObject,page){
+                    if(pageObject.currentPage == 1){
+                        return;
+                    };
+                    pageObject.currentPage --;
+                    getPageData(pageObject,page);
+                },
+
+                downPageClick: function(pageObject,page){
+                    if(pageObject.currentPage >= pageObject.totalPage){
+                        return;
+                    };
+                    pageObject.currentPage ++;
+                    getPageData(pageObject,page);
+                },
+
+                showFirstPageContent: function(pageObject,page){
+                    pageObject.currentPage = 1;
+                    getPageData(pageObject,page);
+                },
+
+                showLastPageContent: function(pageObject,page){
+                    pageObject.currentPage = pageObject.totalPage;
+                    getPageData(pageObject,page);
+                },
+
+                showCurrentPageContent: function(pageObject,page){
+                    pageObject.currentPage = page;
+                    getPageData(pageObject,page);
+                }
+            };
+            return service;
     })
 
 

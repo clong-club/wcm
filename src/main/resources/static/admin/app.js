@@ -1,6 +1,4 @@
-//module
-var app = angular.module('myApp', ['ui.router','myServices']);
-//ui.router
+var app = angular.module('myApp', ['ui.router','myServices','myFilter','myDirective']);
 app.config(['$stateProvider', '$urlRouterProvider','$locationProvider', function($stateProvider, $urlRouterProvider,$locationProvider) {
 	//一是建立一个默认路由，用于管理未知的URL（统一跳转到某处）
 	//二是监听浏览器地址栏URL的变化，重定向到路由定义的状态中
@@ -66,10 +64,29 @@ app.config(['$stateProvider', '$urlRouterProvider','$locationProvider', function
             	},
             }
         }).state('index.usermanager', {
-            url:'/usermanager',
+            url:'/systemSetting/usermanager',
         	views: {
             	'navDetail@index' : {
-            		templateUrl: 'admin/components/user/user_manager.html'
+            		templateUrl: 'admin/components/user/userManager.html',
+            		controller: 'userManagerCtrl as userManager'
+            	},
+            }
+        })
+        .state('index.groupmanager', {
+            url:'/systemSetting/groupmanager',
+        	views: {
+            	'navDetail@index' : {
+            		templateUrl: 'admin/components/user/groupManager.html',
+            		controller: 'groupManagerCtrl as groupManager'
+            	},
+            }
+        })
+        .state('index.authmanager', {
+            url:'/systemSetting/authmanager',
+        	views: {
+            	'navDetail@index' : {
+            		templateUrl: 'admin/components/user/authManager.html',
+            		controller: 'authManagerCtrl as authManager'
             	},
             }
         })

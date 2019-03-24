@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pavilionking.wcm.dao.WAuthMapper">
+  <resultMap id="BaseResultMap" type="com.pavilionking.wcm.dto.WAuth">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="AUTH_CODE" jdbcType="VARCHAR" property="authCode" />
+    <result column="AUTH_NAME" jdbcType="VARCHAR" property="authName" />
+    <result column="URL" jdbcType="VARCHAR" property="url" />
+    <result column="MEMO" jdbcType="VARCHAR" property="memo" />
+    <result column="PARENT_ID" jdbcType="INTEGER" property="parentId" />
+    <result column="PARENT_CODE" jdbcType="VARCHAR" property="parentCode" />
+    <result column="FLAG" jdbcType="INTEGER" property="flag" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, AUTH_CODE, AUTH_NAME, URL, MEMO, PARENT_ID, PARENT_CODE, FLAG
+  </sql>
+  <select id="selectByExample" parameterType="com.pavilionking.wcm.dto.WAuthExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from W_AUTH
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0">
+      limit #{limitStart} offset #{limitEnd}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.pavilionking.wcm.dto.WAuthExample">
+    delete from W_AUTH
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pavilionking.wcm.dto.WAuth">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      select uuid_short()
+    </selectKey>
+    insert into W_AUTH (ID, AUTH_CODE, AUTH_NAME, 
+      URL, MEMO, PARENT_ID, 
+      PARENT_CODE, FLAG)
+    values (#{id,jdbcType=INTEGER}, #{authCode,jdbcType=VARCHAR}, #{authName,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, 
+      #{parentCode,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pavilionking.wcm.dto.WAuth">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      select uuid_short()
+    </selectKey>
+    insert into W_AUTH
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      ID,
+      <if test="authCode != null">
+        AUTH_CODE,
+      </if>
+      <if test="authName != null">
+        AUTH_NAME,
+      </if>
+      <if test="url != null">
+        URL,
+      </if>
+      <if test="memo != null">
+        MEMO,
+      </if>
+      <if test="parentId != null">
+        PARENT_ID,
+      </if>
+      <if test="parentCode != null">
+        PARENT_CODE,
+      </if>
+      <if test="flag != null">
+        FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      #{id,jdbcType=INTEGER},
+      <if test="authCode != null">
+        #{authCode,jdbcType=VARCHAR},
+      </if>
+      <if test="authName != null">
+        #{authName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="parentCode != null">
+        #{parentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pavilionking.wcm.dto.WAuthExample" resultType="java.lang.Long">
+    select count(*) from W_AUTH
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update W_AUTH
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.authCode != null">
+        AUTH_CODE = #{record.authCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authName != null">
+        AUTH_NAME = #{record.authName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null">
+        URL = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memo != null">
+        MEMO = #{record.memo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentId != null">
+        PARENT_ID = #{record.parentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentCode != null">
+        PARENT_CODE = #{record.parentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flag != null">
+        FLAG = #{record.flag,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update W_AUTH
+    set ID = #{record.id,jdbcType=INTEGER},
+      AUTH_CODE = #{record.authCode,jdbcType=VARCHAR},
+      AUTH_NAME = #{record.authName,jdbcType=VARCHAR},
+      URL = #{record.url,jdbcType=VARCHAR},
+      MEMO = #{record.memo,jdbcType=VARCHAR},
+      PARENT_ID = #{record.parentId,jdbcType=INTEGER},
+      PARENT_CODE = #{record.parentCode,jdbcType=VARCHAR},
+      FLAG = #{record.flag,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

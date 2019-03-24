@@ -1,0 +1,52 @@
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<ul class="breadcrumb">
+			<li><a>系統管理</a></li>
+			<li><a>用户管理</a></li>
+			<li class="active">列表</li>
+		</ul>
+		<!--  按钮工具栏，多个按钮组行成工具栏 -->
+		<div class="toolbar" role="toolbar">
+			<!-- 按钮组，btn-group-*设置按钮组中按钮的大小 -->
+			<div class="btn-group">
+				<button type="button" class="btn btn-success">新增</button>
+				<button type="button" class="btn btn-primary">删除</button>
+				<button type="button" class="btn btn-success">修改</button>
+			</div>
+		</div>
+	</div>
+	<div class="panel-body">
+		<div class="list-group">
+			<table class="table table-bordered table-hover" width="100%">
+				<thead>
+					<tr>
+						<th><input type="checkbox" /></th>
+						<th>序号</th>
+						<th>门名称</th>
+						<th>员工姓名</th>
+						<th>性别</th>
+						<th>员工电话</th>
+						<th>开卡日期</th>
+						<th>部门名称</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="obj in userManager.list">
+						<td><input type="checkbox" class='select' value='{{obj.id}}' /></td>
+						<td>{{ $index + 1 }}</td>
+						<td>{{ obj.username }}</td>
+						<td>{{ obj.password }}</td>
+						<td>{{ obj.createTime | date:'yyyy-MM-dd hh:mm:ss' }}</td>
+						<td>{{ obj.realname }}</td>
+						<td>{{ obj.status | userManageTypeFilter }}</td>
+						<td>WEB前端</td>
+					</tr>
+				</tbody>
+			</table>
+			<div my-pagination page-object="userPageObject"></div>
+		</div>
+	</div>
+</div>
+
+
+

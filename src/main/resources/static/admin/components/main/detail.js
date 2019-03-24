@@ -1,4 +1,4 @@
-app.controller('carouselfigureCtrl', function ($scope,req,$state) {
+app.controller('detailCtrl', function ($scope,req,$state) {
     var vm = this;
     //页面初始化
     init();
